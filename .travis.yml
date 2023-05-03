@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker run build -t liam/docker-aws-ci-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true liam/docker-aws-ci-test npm run test
